@@ -508,6 +508,14 @@ const NSInteger TRANSPARENT_NAVBAR_TAG = 78264803;
             self.originalNavBarImages = nil;
         }
     }
+	
+    NSDictionary *navBarBackgroundImage = self.navigatorStyle[@"navBarBackgroundImage"];
+     if (navBarBackgroundImage) {
+       UIImage *img = [RCTConvert UIImage:navBarBackgroundImage];
+       if (img) {
+         [viewController.navigationController.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
+       }
+     }
     
     NSNumber *navBarTransparent = self.navigatorStyle[@"navBarTransparent"];
     BOOL navBarTransparentBool = navBarTransparent ? [navBarTransparent boolValue] : NO;
